@@ -2,7 +2,7 @@ import StepItem from '../../molecules/StepItem';
 
 export default function TemaSkripsi() {
   return (
-    <section id="syarat" className="feature pt-50 pb-50">
+    <section id="tema-skripsi" className="feature pt-50 pb-50">
       <div className="container-fluid">
         <h2 className="text-4xl fw-bold color-palette-1 text-center mb-30">
           Tema
