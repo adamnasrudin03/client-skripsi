@@ -50,87 +50,47 @@ export default function Footer() {
             <div className="col-lg-8 mt-lg-0 mt-20">
               <div className="row gap-sm-0">
                 <div className="col-md-4 col-6 mb-lg-0 mb-25">
-                  <p className="text-lg fw-semibold color-palette-1 mb-12">Company</p>
+                  <p className="text-lg fw-semibold color-palette-1 mb-12"> </p>
                   <ul className="list-unstyled">
                     <li className="mb-6">
-                      <a href="" className="text-lg color-palette-1 text-decoration-none">About Us</a>
+                      <a href="" className="text-lg color-palette-1 text-decoration-none"> </a>
                     </li>
                     <li className="mb-6">
-                      <a href="" className="text-lg color-palette-1 text-decoration-none">
-                        Press
-                        Release
-
-                      </a>
+                      <a href="" className="text-lg color-palette-1 text-decoration-none"> </a>
                     </li>
                     <li className="mb-6">
-                      <a href="" className="text-lg color-palette-1 text-decoration-none">Terms of Use</a>
+                      <a href="" className="text-lg color-palette-1 text-decoration-none"> </a>
                     </li>
                     <li className="mb-6">
-                      <a href="" className="text-lg color-palette-1 text-decoration-none">
-                        Privacy &
-                        Policy
-
-                      </a>
+                      <a href="" className="text-lg color-palette-1 text-decoration-none"> </a>
                     </li>
                   </ul>
                 </div>
                 <div className="col-md-4 col-6 mb-lg-0 mb-25">
-                  <p className="text-lg fw-semibold color-palette-1 mb-12">Support</p>
+                  <p className="text-lg fw-semibold color-palette-1 mb-12"> </p>
                   <ul className="list-unstyled">
                     <li className="mb-6">
-                      <a href="" className="text-lg color-palette-1 text-decoration-none">
-                        Refund
-                        Policy
-
-                      </a>
+                      <a href="" className="text-lg color-palette-1 text-decoration-none"> </a>
                     </li>
                     <li className="mb-6">
-                      <a href="" className="text-lg color-palette-1 text-decoration-none">
-                        Unlock
-                        Rewards
-
-                      </a>
+                      <a href="" className="text-lg color-palette-1 text-decoration-none"> </a>
                     </li>
                     <li className="mb-6">
-                      <a href="" className="text-lg color-palette-1 text-decoration-none">
-                        Live
-                        Chatting
-
-                      </a>
+                      <a href="" className="text-lg color-palette-1 text-decoration-none"> </a>
                     </li>
                   </ul>
                 </div>
                 <div className="col-md-4 col-12 mt-lg-0 mt-md-0 mt-25">
-                  <p className="text-lg fw-semibold color-palette-1 mb-12">Connect</p>
+                  <p className="text-lg fw-semibold color-palette-1 mb-12">Kampus ITBU</p>
                   <ul className="list-unstyled">
                     <li className="mb-6">
                       <a
-                        href="mailto: hi@store.gg"
+                        href="https://goo.gl/maps/gi67n6vY4ZidyzK89"
                         className="text-lg color-palette-1 text-decoration-none"
                       >
-                        hi@store.gg
-
-                      </a>
-                    </li>
-                    <li className="mb-6">
-                      <a
-                        href="mailto: team@store.gg"
-                        className="text-lg color-palette-1 text-decoration-none"
-                      >
-                        team@store.gg
-
-                      </a>
-                    </li>
-                    <li className="mb-6">
-                      <a
-                        href="http://maps.google.com/?q=Pasific 12,
-                                        Jakarta Selatan"
-                        className="text-lg color-palette-1 text-decoration-none"
-                      >
-                        Pasific
-                        12,
-                        Jakarta Selatan
-
+                        Jl. Raya Mawar Merah No.23,
+                        Pondok Kopi, Duren Sawit,
+                        Kota Jakarta Timur, 13460
                       </a>
                     </li>
                     <li className="mb-6">
@@ -138,9 +98,16 @@ export default function Footer() {
                         href="tel: 02111229090"
                         className="text-lg color-palette-1 text-decoration-none"
                       >
-                        021 - 1122 -
-                        9090
+                        Telp: (021) 86606633
 
+                      </a>
+                    </li>
+                    <li className="mb-6">
+                      <a
+                        href="mailto: info@itbu.ac.id"
+                        className="text-lg color-palette-1 text-decoration-none"
+                      >
+                        Email: info@itbu.ac.id
                       </a>
                     </li>
                   </ul>
