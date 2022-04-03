@@ -3,11 +3,12 @@ import AOS from 'aos';
 import Head from 'next/head';
 import Navbar from '../components/organisms/Navbar';
 import MainBanner from '../components/organisms/MainBanner';
-import TransactionStep from '../components/organisms/TransactionStep';
-import FeaturedGame from '../components/organisms/FeaturedGame';
-import Reached from '../components/organisms/Reached';
+import SyaratSkripsi from '../components/organisms/SyaratSkripsi';
+// import FeaturedGame from '../components/organisms/FeaturedGame';
+// import Reached from '../components/organisms/Reached';
 import Story from '../components/organisms/Story';
 import Footer from '../components/organisms/Footer';
+import TemaSkripsi from '../components/organisms/TemaSkripsi';
 
 export default function Home() {
   useEffect(() => {
@@ -25,9 +26,10 @@ export default function Home() {
       </Head>
       <Navbar />
       <MainBanner />
-      <TransactionStep />
-      <FeaturedGame />
-      <Reached />
+      <SyaratSkripsi />
+      <TemaSkripsi />
+      {/* <FeaturedGame />
+      <Reached /> */}
       <Story />
       <Footer />
     </>
