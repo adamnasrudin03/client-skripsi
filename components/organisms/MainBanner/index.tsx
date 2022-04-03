@@ -37,7 +37,7 @@ export default function MainBanner() {
               sebagai tempat pengajuan proposal skripsi
             </p>
             <div className="d-flex flex-lg-row flex-column gap-4">
-              <a className="btn btn-get text-lg text-white rounded-pill" href="#feature" role="button">
+              <a className="btn btn-get text-lg text-white rounded-pill" href="#pengajuan" role="button">
                 Pengajuan
               </a>
               <a className="btn-learn text-lg color-palette-1 my-auto text-center" href="#syarat" role="button">
