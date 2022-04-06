@@ -26,7 +26,7 @@ export default function Expired() {
             <br
               className="d-sm-block d-none"
             />
-            Silahkah Menghubungi Program Studi Untuk Info Lebih Lanjut.
+            Silahkah Menghubungi Bagian Program Studi Untuk Info Lebih Lanjut.
 
           </p>
         </div>
