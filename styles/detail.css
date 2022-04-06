@@ -13,7 +13,6 @@
 }
 
 .detail input[type="text"]{
-    max-width: 437px;
     border: 1px solid #0C145A;
     padding: 0.75rem 1.625rem;
     color: #0C145A;
@@ -24,6 +23,63 @@
 }
 
 .detail input[type="text"]::placeholder{
+    color: #CCD0DD;
+}
+
+.detail input[type="number"]{
+    border: 1px solid #0C145A;
+    padding: 0.75rem 1.625rem;
+    color: #0C145A;
+}
+
+.detail input[type="number"]:focus-within{
+    color: #0C145A;
+}
+
+.detail input[type="number"]::placeholder{
+    color: #CCD0DD;
+}
+
+.detail input[type="file"]{
+    border: 1px solid #0C145A;
+    padding: 0.75rem 1.625rem;
+    color: #0C145A;
+}
+
+.detail input[type="file"]:focus-within{
+    color: #0C145A;
+}
+
+.detail input[type="file"]::placeholder{
+    color: #CCD0DD;
+}
+
+.detail input[type="email"]{
+    border: 1px solid #0C145A;
+    padding: 0.75rem 1.625rem;
+    color: #0C145A;
+}
+
+.detail input[type="email"]:focus-within{
+    color: #0C145A;
+}
+
+.detail input[type="email"]::placeholder{
+    color: #CCD0DD;
+}
+
+
+.detail select{
+    border: 1px solid #0C145A;
+    padding: 0.75rem 1.625rem;
+    color: #0C145A;
+}
+
+.detail select:focus-within{
+    color: #0C145A;
+}
+
+.detail select::placeholder{
     color: #CCD0DD;
 }
 
