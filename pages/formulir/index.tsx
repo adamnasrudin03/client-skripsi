@@ -32,8 +32,9 @@ export default function Index() {
                 style={{ maxWidth: '320px' }}
                 value={value.id}
                 onChange={(event) => setValue({ ...value, id: event.target.value })}
+                required
               >
-                <option value="">Pilih Tahun Ajaran</option>
+                <option selected disabled value="">Pilih Tahun Ajaran</option>
                 <option value="1">2022 - 2023</option>
                 <option value="2">2021 - 2022</option>
                 <option value="3">2020 - 2021</option>
@@ -74,7 +75,7 @@ export default function Index() {
 
           {value.id.length === 0
           && (
-          <div className="row" style={{ marginTop: '-120px' }}>
+          <div className="row" style={{ marginTop: '-100px' }}>
             <Expired />
           </div>
           )}

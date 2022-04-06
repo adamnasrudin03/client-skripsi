@@ -64,6 +64,7 @@ export default function ProposalForm() {
             placeholder="Masukan Nomor Pokok Mahasiswa Anda"
             value={value.npm}
             onChange={(event) => setValue({ ...value, npm: event.target.value })}
+            required
           />
         </div>
       </div>
@@ -81,6 +82,7 @@ export default function ProposalForm() {
           placeholder="Masukan Nama Lengkap Anda"
           value={value.fullName}
           onChange={(event) => setValue({ ...value, fullName: event.target.value })}
+          required
         />
       </div>
 
@@ -97,6 +99,7 @@ export default function ProposalForm() {
           placeholder="Masukan Email Anda"
           value={value.email}
           onChange={(event) => setValue({ ...value, email: event.target.value })}
+          required
         />
       </div>
 
@@ -113,6 +116,7 @@ export default function ProposalForm() {
           placeholder="Masukan No Whatsapp Anda"
           value={value.noWa}
           onChange={(event) => setValue({ ...value, noWa: event.target.value })}
+          required
         />
       </div>
 
@@ -166,6 +170,7 @@ export default function ProposalForm() {
           placeholder="Masukan Semester Anda"
           value={value.semester}
           onChange={(event) => setValue({ ...value, semester: event.target.value })}
+          required
         />
       </div>
 
@@ -181,6 +186,7 @@ export default function ProposalForm() {
           placeholder="Masukan Judul Skripsi Yang Akan Dibuat"
           value={value.title}
           onChange={(event) => setValue({ ...value, title: event.target.value })}
+          required
         />
       </div>
 
@@ -193,8 +199,9 @@ export default function ProposalForm() {
           id="temaSkripsi"
           value={value.tema}
           onChange={(event) => setValue({ ...value, tema: event.target.value })}
+          required
         >
-          <option selected>Pilih Tema Skripsi...</option>
+          <option selected disabled value="">Pilih Tema Skripsi...</option>
           <option value="1">Aplikasi Web</option>
           <option value="2">Aplikasi Mobile</option>
           <option value="3">Aplikasi Desktop</option>
