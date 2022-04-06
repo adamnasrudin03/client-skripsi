@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Expired from '../../components/organisms/Expired';
 import Footer from '../../components/organisms/Footer';
 import ProposalForm from '../../components/organisms/ProposalForm';
 import ProposalHeader from '../../components/organisms/ProposalHeader';
@@ -71,6 +72,12 @@ export default function Index() {
           </div>
           )}
 
+          {value.id.length === 0
+          && (
+          <div className="row" style={{ marginTop: '-120px' }}>
+            <Expired />
+          </div>
+          )}
         </div>
       </section>
       <Footer />
