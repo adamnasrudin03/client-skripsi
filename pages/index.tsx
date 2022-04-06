@@ -9,6 +9,7 @@ import SyaratSkripsi from '../components/organisms/SyaratSkripsi';
 import Story from '../components/organisms/Story';
 import Footer from '../components/organisms/Footer';
 import TemaSkripsi from '../components/organisms/TemaSkripsi';
+import PreparedSkripsi from '../components/organisms/PreparedSkripsi';
 
 export default function Home() {
   useEffect(() => {
@@ -28,6 +29,7 @@ export default function Home() {
       <MainBanner />
       <SyaratSkripsi />
       <TemaSkripsi />
+      <PreparedSkripsi />
       {/* <FeaturedGame />
       <Reached /> */}
       <Story />
