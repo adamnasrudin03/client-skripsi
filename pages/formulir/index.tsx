@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Expired from '../../components/organisms/Expired';
-import Footer from '../../components/organisms/Footer';
+import Footer2 from '../../components/organisms/Footer/Footer2';
 import ProposalForm from '../../components/organisms/ProposalForm';
 import ProposalHeader from '../../components/organisms/ProposalHeader';
 
@@ -81,7 +81,7 @@ export default function Index() {
           )}
         </div>
       </section>
-      <Footer />
+      <Footer2 />
     </>
   );
 }
