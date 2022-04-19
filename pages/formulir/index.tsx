@@ -12,10 +12,14 @@ interface DetailProps {
 }
 
 export default function Index({ dataItem }: DetailProps) {
+  const now = new Date().getTime();
   const [value, setValue] = useState({
     id: '',
-    startYear: '',
-    endYear: '',
+    start_year: '',
+    end_year: '',
+    semester: '',
+    start_at: '',
+    end_at: '',
     periode: '',
 
   });
@@ -57,7 +61,30 @@ export default function Index({ dataItem }: DetailProps) {
                 id="tahunAjaran"
                 style={{ maxWidth: '320px' }}
                 value={value.id}
-                onChange={(event) => setValue({ ...value, id: event.target.value })}
+                onChange={(event) => {
+                  const selected = dataAjaran.find((x) => x._id === event.target.value);
+                  const sID: string = selected?._id || ' ';
+                  const sSemester: string = selected?.semester || ' ';
+                  const sStartYear: string = selected?.start_year || ' ';
+                  const sEndYear: string = selected?.end_year || ' ';
+                  const sStartAt: string = selected?.start_at || ' ';
+                  const sEndAt: string = selected?.end_at || ' ';
+
+                  const [day, month, year] = sStartAt.split('/');
+                  const [day2, month2, year2] = sEndAt.split('/');
+                  const sPeriode: string = `${[day, month, year].join('-')} s/d ${[day2, month2, year2].join('-')}`;
+
+                  setValue({
+                    ...value,
+                    id: sID,
+                    semester: sSemester,
+                    start_year: sStartYear,
+                    end_year: sEndYear,
+                    start_at: sStartAt,
+                    end_at: sEndAt,
+                    periode: sPeriode,
+                  });
+                }}
                 required
               >
                 <option selected disabled value="">Pilih Tahun Ajaran</option>
@@ -76,43 +103,44 @@ export default function Index({ dataItem }: DetailProps) {
             </div>
           </div>
 
-          {value.id.length > 0 && (
-          <div className="row">
-            <div className="col-xl-3 col-lg-4 col-md-5 pb-30 pb-md-0 pe-md-25 text-md-start">
-              <ProposalHeader
-                type="mobile"
-                data={{
-                  name: 'nama',
-                  thumbnail: '/logo.png',
-                  periode: {
-                    date: '01-04-2022 s/d 16-04-2022',
-                  },
-                }}
-              />
-            </div>
-            <div className="col-xl-9 col-lg-8 col-md-7 ps-md-25">
-              <ProposalHeader
-                type="desktop"
-                data={{
-                  name: 'Tahun ajaran 2022 - 2023',
-                  thumbnail: '/logo.png',
-                  periode: {
-                    date: '01-04-2022 s/d 16-04-2022',
-                  },
-                }}
-              />
-              <hr />
-              <ProposalForm />
-            </div>
-          </div>
-          )}
+          {(new Date(value.start_at).getTime() <= now && now <= new Date(value.end_at).getTime())
+            ? (
+              <div className="row">
+                <div className="col-xl-3 col-lg-4 col-md-5 pb-30 pb-md-0 pe-md-25 text-md-start">
+                  <ProposalHeader
+                    type="mobile"
+                    data={{
+                      idAjaran: value.id,
+                      name: 'nama',
+                      thumbnail: '/logo.png',
+                      periode: {
+                        date: value.periode,
+                      },
+                    }}
+                  />
+                </div>
+                <div className="col-xl-9 col-lg-8 col-md-7 ps-md-25">
+                  <ProposalHeader
+                    type="desktop"
+                    data={{
+                      idAjaran: value.id,
+                      name: `Tahun Ajaran ${value.start_year} - ${value.end_year} (${value.semester})`,
+                      thumbnail: '/logo.png',
+                      periode: {
+                        date: value.periode,
+                      },
+                    }}
+                  />
+                  <hr />
+                  <ProposalForm />
+                </div>
+              </div>
+            ) : (
+              <div className="row" style={{ marginTop: '-100px' }}>
+                <Expired />
+              </div>
+            )}
 
-          {value.id.length === 0
-          && (
-          <div className="row" style={{ marginTop: '-100px' }}>
-            <Expired />
-          </div>
-          )}
         </div>
       </section>
       <Footer2 />

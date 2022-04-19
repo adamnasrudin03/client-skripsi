@@ -1,6 +1,7 @@
 interface ProposalHeaderProps {
     type: 'desktop' | 'mobile';
     data: {
+      idAjaran: string;
       name: string;
       thumbnail: string;
       periode: {
