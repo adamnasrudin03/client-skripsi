@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { useEffect, useState } from 'react';
+import BlankSelected from '../../components/organisms/BlankSelected';
 import Expired from '../../components/organisms/Expired';
 import Footer2 from '../../components/organisms/Footer/Footer2';
 import ProposalForm from '../../components/organisms/ProposalForm';
@@ -116,8 +117,10 @@ export default function Index({ dataItem, dateNowNumber }: DetailProps) {
             // eslint-disable-next-line no-nested-ternary
             value.numberStartAt === 0 && value.numberEndAt === 0
               ? (
-                // blank page if before selected ajaran
-                <div style={{ minHeight: '350px' }} />
+            // blank page if before selected ajaran
+                <div className="row" style={{ marginTop: 0 }}>
+                  <BlankSelected />
+                </div>
               )
               : ((value.numberStartAt <= dateNowNumber && dateNowNumber <= value.numberEndAt)
                 ? (
