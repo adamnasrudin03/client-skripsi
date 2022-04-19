@@ -122,7 +122,6 @@ export default function Index({ dataItem }: DetailProps) {
 
 export async function getStaticProps() {
   const data = await getAjaran();
-  localStorage.setItem('data-ajaran', JSON.stringify(data));
   return {
     props: {
       dataItem: data,
