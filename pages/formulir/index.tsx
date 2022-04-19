@@ -1,10 +1,17 @@
+/* eslint-disable no-console */
 import { useEffect, useState } from 'react';
 import Expired from '../../components/organisms/Expired';
 import Footer2 from '../../components/organisms/Footer/Footer2';
 import ProposalForm from '../../components/organisms/ProposalForm';
 import ProposalHeader from '../../components/organisms/ProposalHeader';
+import { getAjaran } from '../../services/ajaran';
+import { AjaranTypes } from '../../services/data-types';
 
-export default function Index() {
+interface DetailProps {
+  dataItem: AjaranTypes;
+}
+
+export default function Index({ dataItem }: DetailProps) {
   const [value, setValue] = useState({
     id: '',
     startYear: '',
@@ -12,9 +19,28 @@ export default function Index() {
     periode: '',
 
   });
+
+  const [dataAjaran, setDataAjaran] = useState([
+    {
+      _id: '',
+      start_year: '',
+      end_year: '',
+      semester: '',
+      start_at: '',
+      end_at: '',
+      createdAt: '',
+      updatedAt: '',
+    },
+  ]);
+
   useEffect(() => {
-    // localStorage.setItem('data-item', JSON.stringify(dataItem));
+    localStorage.setItem('data-ajaran', JSON.stringify(dataItem));
+
+    const dataFromLocal = localStorage.getItem('data-ajaran');
+    const dataAjaranLocal = JSON.parse(dataFromLocal!);
+    setDataAjaran(dataAjaranLocal);
   }, []);
+
   return (
     <>
       <section className="detail pt-lg-60 pb-50">
@@ -35,9 +61,17 @@ export default function Index() {
                 required
               >
                 <option selected disabled value="">Pilih Tahun Ajaran</option>
-                <option value="1">2022 - 2023</option>
-                <option value="2">2021 - 2022</option>
-                <option value="3">2020 - 2021</option>
+                {dataAjaran.map((item) => (
+                  <option value={item._id}>
+                    {item.start_year}
+                    {' '}
+                    -
+                    {' '}
+                    {item.end_year}
+                    {' '}
+                    {item.semester}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -84,4 +118,14 @@ export default function Index() {
       <Footer2 />
     </>
   );
+}
+
+export async function getStaticProps() {
+  const data = await getAjaran();
+  localStorage.setItem('data-ajaran', JSON.stringify(data));
+  return {
+    props: {
+      dataItem: data,
+    },
+  };
 }

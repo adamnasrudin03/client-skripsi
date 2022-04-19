@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
-import { setCheckout } from '../../../services/player';
+import { setCheckout } from '../../../services/ajaran';
 
 export default function CheckoutConfirmation() {
   const [checkbox, setCheckBox] = useState(false);
