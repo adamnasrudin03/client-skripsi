@@ -9,10 +9,12 @@ import { AjaranTypes } from '../../services/data-types';
 
 interface DetailProps {
   dataItem: AjaranTypes;
+  // eslint-disable-next-line react/no-unused-prop-types
+  dateNow: string;
+  dateNowNumber: number;
 }
 
-export default function Index({ dataItem }: DetailProps) {
-  const now = new Date().getTime();
+export default function Index({ dataItem, dateNowNumber }: DetailProps) {
   const [value, setValue] = useState({
     id: '',
     start_year: '',
@@ -21,7 +23,8 @@ export default function Index({ dataItem }: DetailProps) {
     start_at: '',
     end_at: '',
     periode: '',
-
+    numberStartAt: 0,
+    numberEndAt: 0,
   });
 
   const [dataAjaran, setDataAjaran] = useState([
@@ -71,7 +74,9 @@ export default function Index({ dataItem }: DetailProps) {
                   const sEndAt: string = selected?.end_at || ' ';
 
                   const [day, month, year] = sStartAt.split('/');
+                  const numberStart = parseFloat(`${year}${month}${day}`);
                   const [day2, month2, year2] = sEndAt.split('/');
+                  const numberEnd = parseFloat(`${year2}${month2}${day2}`);
                   const sPeriode: string = `${[day, month, year].join('-')} s/d ${[day2, month2, year2].join('-')}`;
 
                   setValue({
@@ -83,6 +88,8 @@ export default function Index({ dataItem }: DetailProps) {
                     start_at: sStartAt,
                     end_at: sEndAt,
                     periode: sPeriode,
+                    numberStartAt: numberStart,
+                    numberEndAt: numberEnd,
                   });
                 }}
                 required
@@ -96,50 +103,60 @@ export default function Index({ dataItem }: DetailProps) {
                     {' '}
                     {item.end_year}
                     {' '}
+                    (
                     {item.semester}
+                    )
                   </option>
                 ))}
               </select>
             </div>
           </div>
 
-          {(new Date(value.start_at).getTime() <= now && now <= new Date(value.end_at).getTime())
-            ? (
-              <div className="row">
-                <div className="col-xl-3 col-lg-4 col-md-5 pb-30 pb-md-0 pe-md-25 text-md-start">
-                  <ProposalHeader
-                    type="mobile"
-                    data={{
-                      idAjaran: value.id,
-                      name: 'nama',
-                      thumbnail: '/logo.png',
-                      periode: {
-                        date: value.periode,
-                      },
-                    }}
-                  />
-                </div>
-                <div className="col-xl-9 col-lg-8 col-md-7 ps-md-25">
-                  <ProposalHeader
-                    type="desktop"
-                    data={{
-                      idAjaran: value.id,
-                      name: `Tahun Ajaran ${value.start_year} - ${value.end_year} (${value.semester})`,
-                      thumbnail: '/logo.png',
-                      periode: {
-                        date: value.periode,
-                      },
-                    }}
-                  />
-                  <hr />
-                  <ProposalForm />
-                </div>
-              </div>
-            ) : (
-              <div className="row" style={{ marginTop: '-100px' }}>
-                <Expired />
-              </div>
-            )}
+          {
+            // eslint-disable-next-line no-nested-ternary
+            value.numberStartAt === 0 && value.numberEndAt === 0
+              ? (
+                // blank page if before selected ajaran
+                <div style={{ minHeight: '350px' }} />
+              )
+              : ((value.numberStartAt <= dateNowNumber && dateNowNumber <= value.numberEndAt)
+                ? (
+                  <div className="row">
+                    <div className="col-xl-3 col-lg-4 col-md-5 pb-30 pb-md-0 pe-md-25 text-md-start">
+                      <ProposalHeader
+                        type="mobile"
+                        data={{
+                          idAjaran: value.id,
+                          name: 'nama',
+                          thumbnail: '/logo.png',
+                          periode: {
+                            date: value.periode,
+                          },
+                        }}
+                      />
+                    </div>
+                    <div className="col-xl-9 col-lg-8 col-md-7 ps-md-25">
+                      <ProposalHeader
+                        type="desktop"
+                        data={{
+                          idAjaran: value.id,
+                          name: `Tahun Ajaran ${value.start_year} - ${value.end_year} (${value.semester})`,
+                          thumbnail: '/logo.png',
+                          periode: {
+                            date: value.periode,
+                          },
+                        }}
+                      />
+                      <hr />
+                      <ProposalForm />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="row" style={{ marginTop: '-100px' }}>
+                    <Expired />
+                  </div>
+                ))
+          }
 
         </div>
       </section>
@@ -149,10 +166,20 @@ export default function Index({ dataItem }: DetailProps) {
 }
 
 export async function getStaticProps() {
+  const currentDate = new Date();
+  const cDay = currentDate.getDate();
+  const cMonth = String(currentDate.getMonth() + 1).padStart(2, '0');
+  const cYear = currentDate.getFullYear();
+  const now:string = `${cDay}/${cMonth}/${cYear}`;
+
+  const nowNumeber: number = parseFloat(`${cYear}${cMonth}${cDay}`);
+
   const data = await getAjaran();
   return {
     props: {
       dataItem: data,
+      dateNow: now,
+      dateNowNumber: nowNumeber,
     },
   };
 }
