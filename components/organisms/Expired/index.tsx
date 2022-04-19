@@ -1,5 +1,5 @@
 import Lottie from 'lottie-react';
-import laptop from './laptop.json';
+import laptop from '../../animations/laptop.json';
 
 export default function Expired() {
   return (
