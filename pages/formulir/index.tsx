@@ -130,7 +130,7 @@ export default function Index({ dataItem, dateNowNumber }: DetailProps) {
                         type="mobile"
                         data={{
                           idAjaran: value.id,
-                          name: 'nama',
+                          name: `Tahun Ajaran ${value.start_year} - ${value.end_year} (${value.semester})`,
                           thumbnail: '/logo.png',
                           periode: {
                             date: value.periode,
