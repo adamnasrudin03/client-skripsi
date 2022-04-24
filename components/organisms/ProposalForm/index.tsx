@@ -171,7 +171,7 @@ export default function ProposalForm() {
           No Whatsapp
         </label>
         <input
-          type="text"
+          type="number"
           className="form-control rounded-pill text-lg"
           id="noWA"
           name="noWA"
