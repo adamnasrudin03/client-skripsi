@@ -15,6 +15,12 @@ export default function ProposalForm() {
     yes: false,
     no: false,
   });
+
+  const [oldSK, setOldSK] = useState({
+    yes: false,
+    no: false,
+  });
+
   const [value, setValue] = useState({
     npm: '',
     fullName: '',
@@ -24,6 +30,7 @@ export default function ProposalForm() {
     email: '',
     tema: '',
     matkulLain: '',
+    dosenOld: '',
   });
   const router = useRouter();
 
@@ -50,7 +57,63 @@ export default function ProposalForm() {
 
   return (
     <>
-      <div className="pt-md-50 pt-30">
+      <div className={oldSK.yes ? 'pt-md-50 pt-30 pb-20' : 'pt-md-50 pt-30 pb-50'}>
+        <label htmlFor="oldSK" className="form-label text-lg fw-medium color-palette-1 mb-10">
+          Apakah Sudah Mempunyai SK Sebelumnya ?
+        </label>
+        <br />
+        <div className="form-check form-check-inline">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            checked={oldSK.yes}
+            onChange={() => {
+              oldSK.yes = !oldSK.yes;
+              oldSK.no = !oldSK.yes;
+              setOldSK({ ...oldSK });
+            }}
+            id="yesoldSK"
+          />
+          <label className="form-check-label" htmlFor="yesoldSK"> Ya </label>
+        </div>
+        <div className="form-check form-check-inline">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            checked={oldSK.no}
+            onChange={() => {
+              oldSK.no = !oldSK.no;
+              oldSK.yes = !oldSK.no;
+              setOldSK({ ...oldSK });
+            }}
+            id="nooldSK"
+          />
+          <label className="form-check-label" htmlFor="nooldSK">
+            Tidak
+          </label>
+        </div>
+      </div>
+
+      {oldSK.yes
+      && (
+      <div className="pb-20">
+        <label htmlFor="dosenOld" className="form-label text-lg fw-medium color-palette-1 mb-10">
+          Nama Dosen Pembimbing Sebelumnya
+        </label>
+        <input
+          type="text"
+          className="form-control rounded-pill text-lg"
+          id="dosenOld"
+          name="dosenOld"
+          aria-describedby="dosenOld"
+          placeholder=" Masukan Nama Dosen Pembimbing Sebelumnya"
+          value={value.dosenOld}
+          onChange={(event) => setValue({ ...value, dosenOld: event.target.value })}
+        />
+      </div>
+      )}
+
+      <div className="pb-20">
         <div className="pb-20">
           <label htmlFor="NPM" className="form-label text-lg fw-medium color-palette-1 mb-10">
             NPM
