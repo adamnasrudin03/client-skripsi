@@ -220,22 +220,48 @@ export default function ProposalForm() {
         </div>
       </div>
 
+      {(lanjutan.yes || lanjutan.no)
+      && (
       <div className="pb-20">
         <label htmlFor="semester" className="form-label text-lg fw-medium color-palette-1 mb-10">
           Semester
         </label>
-        <input
-          type="number"
-          className="form-control rounded-pill text-lg"
+        <select
+          className="form-select  rounded-pill text-lg"
           id="semester"
-          name="semester"
-          aria-describedby="semester"
-          placeholder="Masukan Semester Anda"
           value={value.semester}
           onChange={(event) => setValue({ ...value, semester: event.target.value })}
           required
-        />
+        >
+          <option selected disabled value="">Pilih Semester Saat Ini...</option>
+          { lanjutan.yes && (
+          <>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </>
+          )}
+
+          { lanjutan.no && (
+          <>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+          </>
+          )}
+        </select>
       </div>
+      )}
 
       <div className="pb-20">
         <label htmlFor="title" className="form-label text-lg fw-medium color-palette-1 mb-10">
