@@ -265,14 +265,14 @@ export default function ProposalForm() {
           required
         >
           <option selected disabled value="">Pilih Tema Skripsi...</option>
-          <option value="1">Aplikasi Web</option>
-          <option value="2">Aplikasi Mobile</option>
-          <option value="3">Aplikasi Desktop</option>
-          <option value="4">Desain Aplikasi</option>
-          <option value="5">Basis Data </option>
-          <option value="6">Internet Of Thinks</option>
-          <option value="7">Data Mining</option>
-          <option value="8">Jaringan Komputer</option>
+          <option value="bidang_aplikasi_web">Aplikasi Web</option>
+          <option value="bidang_aplikasi_mobile">Aplikasi Mobile</option>
+          <option value="bidang_aplikasi_desktop">Aplikasi Desktop</option>
+          <option value="bidang_desain_aplikasi">Desain Aplikasi</option>
+          <option value="bidang_basis_data">Basis Data </option>
+          <option value="bidang_iot">Internet Of Thinks</option>
+          <option value="bidang_data_mining">Data Mining</option>
+          <option value="bidang_jaringan_komputer">Jaringan Komputer</option>
         </select>
       </div>
 
