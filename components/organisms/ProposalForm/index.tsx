@@ -1,10 +1,17 @@
+/* eslint-disable no-console */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-alert */
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
+import { RequestPengajuanType } from '../../../services/data-types';
+import { createPengajuan } from '../../../services/mahasiswa';
 
-export default function ProposalForm() {
+interface ProposalFormProps {
+  ajaranID: string;
+}
+export default function ProposalForm(props: ProposalFormProps) {
+  const { ajaranID } = props;
   const [fileProposal, setFileProposal] = useState('');
   const [fileRekap, setFileRekap] = useState('');
   const [lanjutan, setLanjutan] = useState({
@@ -22,6 +29,7 @@ export default function ProposalForm() {
   });
 
   const [value, setValue] = useState({
+    ajaranId: ajaranID,
     npm: '',
     fullName: '',
     semester: '',
@@ -31,15 +39,48 @@ export default function ProposalForm() {
     tema: '',
     matkulLain: '',
     dosenOld: '',
+    fileProposal: '',
+    fileRekap: '',
   });
+
   const router = useRouter();
 
   const onSubmit = () => {
-    if (value.npm === '' || value.fullName === '') {
+    console.log(' fileProposal : ', fileProposal);
+    console.log(' fileRekap : ', fileRekap);
+
+    if (value.npm || value.fullName || value.email
+      || value.semester || value.noWa || value.tema || value.title) {
       toast.error('silahkan isi semua data!!!');
-    } else {
-      toast.success('Proposal skripsi telah berhasil diajukan.');
+      return;
     }
+
+    const requestData: RequestPengajuanType = {
+      npm: value.npm,
+      nama: value.fullName,
+      email: value.email,
+      lanjutan: !!lanjutan.yes,
+      semester: value.semester,
+      no_wa: value.noWa,
+      judul_skripsi: value.title,
+      tema_skripsi: value.tema,
+      file_proposal: value.fileProposal,
+      file_rekap_nilai: value.fileRekap,
+      dosen_sebelum: value.dosenOld,
+      ajaran_id: value.ajaranId,
+    };
+
+    createPengajuan(requestData, () => {
+      toast.success('Proposal skripsi telah berhasil diajukan.');
+      setTimeout(() => {
+        router.push('/');
+      }, 3000);
+    }, (err: any) => {
+      toast.error('Proposal skripsi gagal diajukan, : ', err);
+      setTimeout(() => {
+        router.push('/');
+      }, 3000);
+    });
   };
 
   const optionsBack = () => {
