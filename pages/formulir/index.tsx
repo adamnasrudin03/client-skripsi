@@ -151,7 +151,9 @@ export default function Index({ dataItem, dateNowNumber }: DetailProps) {
                         }}
                       />
                       <hr />
-                      <ProposalForm />
+                      <ProposalForm
+                        ajaranID={value.id}
+                      />
                     </div>
                   </div>
                 ) : (
