@@ -1,11 +1,10 @@
-/* eslint-disable no-console */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-alert */
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import { RequestPengajuanType } from '../../../services/data-types';
-import { createPengajuan } from '../../../services/mahasiswa';
+import { setPengajuan } from '../../../services/mahasiswa';
 
 interface ProposalFormProps {
   ajaranID: string;
@@ -45,7 +44,7 @@ export default function ProposalForm(props: ProposalFormProps) {
 
   const router = useRouter();
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     if (!value.npm || !value.fullName || !value.email
       || !value.semester || !value.noWa || !value.tema || !value.title) {
       toast.error('silahkan isi semua data!!!');
@@ -67,17 +66,15 @@ export default function ProposalForm(props: ProposalFormProps) {
       ajaran_id: value.ajaranId,
     };
 
-    createPengajuan(requestData, () => {
-      toast.success('Proposal skripsi telah berhasil diajukan.');
+    const response = await setPengajuan(requestData);
+    if (response.error) {
+      toast.error(response.message);
+    } else {
+      toast.success('Proposal Skripsi Berhasil Diajukan.');
       setTimeout(() => {
         router.push('/');
       }, 3000);
-    }, (err: any) => {
-      toast.error('Proposal skripsi gagal diajukan, : ', err);
-      setTimeout(() => {
-        router.push('/');
-      }, 3000);
-    });
+    }
   };
 
   const optionsBack = () => {
