@@ -46,11 +46,8 @@ export default function ProposalForm(props: ProposalFormProps) {
   const router = useRouter();
 
   const onSubmit = () => {
-    console.log(' fileProposal : ', fileProposal);
-    console.log(' fileRekap : ', fileRekap);
-
-    if (value.npm || value.fullName || value.email
-      || value.semester || value.noWa || value.tema || value.title) {
+    if (!value.npm || !value.fullName || !value.email
+      || !value.semester || !value.noWa || !value.tema || !value.title) {
       toast.error('silahkan isi semua data!!!');
       return;
     }
