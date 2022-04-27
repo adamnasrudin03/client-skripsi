@@ -24,3 +24,13 @@ export async function uploadProposalFile(data: FormData) {
     data,
   });
 }
+
+export async function uploadRekapFile(data: FormData) {
+  const url = `${ROOT_API}/${API_VERSION}/pengajuan-skripsi/upload-rekap`;
+
+  return callAPI({
+    url,
+    method: 'POST',
+    data,
+  });
+}
