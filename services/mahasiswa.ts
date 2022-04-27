@@ -14,3 +14,13 @@ export async function setPengajuan(data: any) {
     token: true,
   });
 }
+
+export async function uploadProposalFile(data: FormData) {
+  const url = `${ROOT_API}/${API_VERSION}/pengajuan-skripsi/upload-proposal`;
+
+  return callAPI({
+    url,
+    method: 'POST',
+    data,
+  });
+}
