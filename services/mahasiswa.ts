@@ -11,7 +11,6 @@ export async function setPengajuan(data: any) {
     url,
     method: 'POST',
     data,
-    token: true,
   });
 }
 
