@@ -4,15 +4,23 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import { RequestPengajuanType } from '../../../services/data-types';
-import { setPengajuan } from '../../../services/mahasiswa';
+import { setPengajuan, uploadProposalFile, uploadRekapFile } from '../../../services/mahasiswa';
 
 interface ProposalFormProps {
   ajaranID: string;
 }
+
+interface fileTypes {
+  proposal: any;
+  rekap: any;
+}
+
 export default function ProposalForm(props: ProposalFormProps) {
   const { ajaranID } = props;
-  const [fileProposal, setFileProposal] = useState('');
-  const [fileRekap, setFileRekap] = useState('');
+  const [fileUpload, setFileUpload] = useState<fileTypes>({
+    rekap: '',
+    proposal: '',
+  });
   const [lanjutan, setLanjutan] = useState({
     yes: false,
     no: false,
@@ -45,10 +53,37 @@ export default function ProposalForm(props: ProposalFormProps) {
   const router = useRouter();
 
   const onSubmit = async () => {
+    let uriProposal: string = '';
+    let uriRekap: string = '';
+
     if (!value.npm || !value.fullName || !value.email
       || !value.semester || !value.noWa || !value.tema || !value.title) {
       toast.error('silahkan isi semua data!!!');
       return;
+    }
+
+    // Upload File Proposal
+    if (fileUpload.proposal) {
+      const data = new FormData();
+      data.append('file', fileUpload.proposal);
+      const responseFile = await uploadProposalFile(data);
+      if (responseFile.error) {
+        toast.error(responseFile.message);
+        return;
+      }
+      uriProposal = responseFile.data?.data?.uri || '';
+    }
+
+    // Upload File Rekap
+    if (fileUpload.rekap) {
+      const data = new FormData();
+      data.append('file', fileUpload.rekap);
+      const responseFile = await uploadRekapFile(data);
+      if (responseFile.error) {
+        toast.error(responseFile.message);
+        return;
+      }
+      uriRekap = responseFile.data?.data?.uri || '';
     }
 
     const requestData: RequestPengajuanType = {
@@ -60,8 +95,8 @@ export default function ProposalForm(props: ProposalFormProps) {
       no_wa: value.noWa,
       judul_skripsi: value.title,
       tema_skripsi: value.tema,
-      file_proposal: value.fileProposal,
-      file_rekap_nilai: value.fileRekap,
+      file_proposal: uriProposal,
+      file_rekap_nilai: uriRekap,
       dosen_sebelum: value.dosenOld,
       ajaran_id: value.ajaranId,
     };
@@ -348,8 +383,13 @@ export default function ProposalForm(props: ProposalFormProps) {
           name="fileProposal"
           placeholder="Upload File Proposal Anda"
           accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-          value={fileProposal}
-          onChange={(event) => setFileProposal(event.target.value)}
+          onChange={(event) => {
+            const file = event.target.files![0];
+            return setFileUpload({
+              ...fileUpload,
+              proposal: file,
+            });
+          }}
         />
       </div>
 
@@ -364,8 +404,13 @@ export default function ProposalForm(props: ProposalFormProps) {
           name="fileRekap"
           placeholder="Upload File Rekap Nilai Anda"
           accept=".pdf"
-          value={fileRekap}
-          onChange={(event) => setFileRekap(event.target.value)}
+          onChange={(event) => {
+            const file = event.target.files![0];
+            return setFileUpload({
+              ...fileUpload,
+              rekap: file,
+            });
+          }}
         />
       </div>
 
