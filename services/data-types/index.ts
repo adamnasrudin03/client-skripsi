@@ -19,7 +19,7 @@ export interface RequestPengajuanType {
     file_proposal: string;
     file_rekap_nilai: string;
     dosen_sebelum: string;
-    ajaran_id: string;
+    ajaran: string;
 }
 
 export interface ResponsePengajuanTypes {
@@ -38,7 +38,7 @@ export interface ResponsePengajuanTypes {
         file_proposal: string;
         file_rekap_nilai: string;
         dosen_sebelum: string;
-        ajaran_id: string;
+        ajaran: string;
         created_at: string;
         updated_at: string;
     }

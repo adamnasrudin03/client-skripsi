@@ -98,7 +98,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       file_proposal: uriProposal,
       file_rekap_nilai: uriRekap,
       dosen_sebelum: value.dosenOld,
-      ajaran_id: value.ajaranId,
+      ajaran: value.ajaranId,
     };
 
     const response = await setPengajuan(requestData);
