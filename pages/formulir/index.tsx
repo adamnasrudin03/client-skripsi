@@ -97,7 +97,7 @@ export default function Index({ dataItem, dateNowNumber }: DetailProps) {
               >
                 <option selected disabled value="">Pilih Tahun Ajaran</option>
                 {dataAjaran.map((item) => (
-                  <option value={item._id}>
+                  <option key={item._id} value={item._id}>
                     {item.start_year}
                     {' '}
                     -
