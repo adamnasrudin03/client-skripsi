@@ -182,7 +182,7 @@ export async function getStaticProps() {
   const data = await getAjaran();
   return {
     props: {
-      dataItem: data,
+      dataItem: data || [],
       dateNow: now,
       dateNowNumber: nowNumeber,
     },
