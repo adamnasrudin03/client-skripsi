@@ -180,7 +180,6 @@ export async function getStaticProps() {
   const nowNumeber: number = parseFloat(`${cYear}${cMonth}${cDay}`);
 
   const data = await getAjaran();
-  console.log('data : ', data);
   return {
     props: {
       dataItem: data || [],
