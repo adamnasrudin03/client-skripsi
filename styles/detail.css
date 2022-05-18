@@ -68,6 +68,17 @@
     color: #CCD0DD;
 }
 
+/* Chrome, Safari, Edge, Opera */
+.detail input::-webkit-outer-spin-button,
+.detail input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.detail input[type=number] {
+  -moz-appearance: textfield;
+}
 
 .detail select{
     border: 1px solid #0C145A;
