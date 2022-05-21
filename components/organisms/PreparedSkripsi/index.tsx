@@ -12,8 +12,8 @@ export default function PreparedSkripsi() {
         </h2>
         <div className="row gap-lg-0 gap-4" data-aos="fade-up">
           <StepItem icon="step2" title="1. Tema Skripsi" desc1="Mahasiswa wajib memilih " desc2="tema skripsi yang telah disediakan." />
-          <StepItem icon="step3" title="2. Document Proposal Skripsi" desc1="Mahasiswa wajib meyiapkan " desc2="document Proposal Skripsi dengan format .doc" />
-          <StepItem icon="step1" title="3. Document Rekap Nilai Mahasiswa" desc1="Mahasiswa wajib menyiapkan " desc2="document Rekap Nilai sampai semester saat ini, dengan format .pdf" />
+          <StepItem icon="step3" title="2. Dokumen Proposal Skripsi" desc1="Mahasiswa wajib meyiapkan " desc2="Dokumen Proposal Skripsi dengan format .doc" />
+          <StepItem icon="step1" title="3. Dokumen Rekap Nilai Mahasiswa" desc1="Mahasiswa wajib menyiapkan " desc2="Dokumen Rekap Nilai sampai semester saat ini, dengan format .pdf" />
           <div className="mt-5">  </div>
         </div>
       </div>
