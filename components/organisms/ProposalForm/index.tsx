@@ -98,7 +98,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       tema_skripsi: value.tema,
       file_proposal: uriProposal,
       file_rekap_nilai: uriRekap,
-      dosen_sebelum1: value.dosenOld1,
+      dosen_sebelum: value.dosenOld1,
       dosen_sebelum2: value.dosenOld2,
       ajaran: value.ajaranId,
     };

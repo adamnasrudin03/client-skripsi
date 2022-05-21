@@ -18,7 +18,7 @@ export interface RequestPengajuanType {
     tema_skripsi: string;
     file_proposal: string;
     file_rekap_nilai: string;
-    dosen_sebelum1: string;
+    dosen_sebelum: string;
     dosen_sebelum2: string;
     ajaran: string;
 }
