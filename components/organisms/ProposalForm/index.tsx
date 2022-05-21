@@ -45,7 +45,8 @@ export default function ProposalForm(props: ProposalFormProps) {
     email: '',
     tema: '',
     matkulLain: '',
-    dosenOld: '',
+    dosenOld1: '',
+    dosenOld2: '',
     fileProposal: '',
     fileRekap: '',
   });
@@ -97,7 +98,8 @@ export default function ProposalForm(props: ProposalFormProps) {
       tema_skripsi: value.tema,
       file_proposal: uriProposal,
       file_rekap_nilai: uriRekap,
-      dosen_sebelum: value.dosenOld,
+      dosen_sebelum1: value.dosenOld1,
+      dosen_sebelum2: value.dosenOld2,
       ajaran: value.ajaranId,
     };
 
@@ -166,21 +168,39 @@ export default function ProposalForm(props: ProposalFormProps) {
 
       {oldSK.yes
       && (
-      <div className="pb-20">
-        <label htmlFor="dosenOld" className="form-label text-lg fw-medium color-palette-1 mb-10">
-          Nama Dosen Pembimbing Sebelumnya
-        </label>
-        <input
-          type="text"
-          className="form-control rounded-pill text-lg"
-          id="dosenOld"
-          name="dosenOld"
-          aria-describedby="dosenOld"
-          placeholder=" Masukan Nama Dosen Pembimbing Sebelumnya"
-          value={value.dosenOld}
-          onChange={(event) => setValue({ ...value, dosenOld: event.target.value })}
-        />
-      </div>
+        <>
+          <div className="pb-20">
+            <label htmlFor="dosenOld1" className="form-label text-lg fw-medium color-palette-1 mb-10">
+              Nama Dosen Pembimbing 1 Sebelumnya
+            </label>
+            <input
+              type="text"
+              className="form-control rounded-pill text-lg"
+              id="dosenOld1"
+              name="dosenOld1"
+              aria-describedby="dosenOld1"
+              placeholder=" Masukan Nama Dosen Pembimbing 1 Sebelumnya"
+              value={value.dosenOld1}
+              onChange={(event) => setValue({ ...value, dosenOld1: event.target.value })}
+            />
+          </div>
+
+          <div className="pb-20">
+            <label htmlFor="dosenOld2" className="form-label text-lg fw-medium color-palette-1 mb-10">
+              Nama Dosen Pembimbing 2 Sebelumnya
+            </label>
+            <input
+              type="text"
+              className="form-control rounded-pill text-lg"
+              id="dosenOld2"
+              name="dosenOld2"
+              aria-describedby="dosenOld2"
+              placeholder=" Masukan Nama Dosen Pembimbing 2 Sebelumnya"
+              value={value.dosenOld2}
+              onChange={(event) => setValue({ ...value, dosenOld2: event.target.value })}
+            />
+          </div>
+        </>
       )}
 
       <div className="pb-20">
