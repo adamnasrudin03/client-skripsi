@@ -111,6 +111,11 @@ export default function ProposalForm(props: ProposalFormProps) {
       });
     }
 
+    if (oldSK.yes && !value.dosenOld1 && !value.dosenOld2) {
+      toast.error('Jika memilih ya pada pertanyan mempunyai SK bimbingan, maka wajib mengisi data dosen pembimbing sebelumnya.');
+      return;
+    }
+
     if (!value.npm || !value.fullName || !value.email
       || !value.semester || !value.noWa || !value.tema || !value.title) {
       toast.error('silahkan isi semua data!!!');
