@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-restricted-globals */
@@ -119,6 +120,16 @@ export default function ProposalForm(props: ProposalFormProps) {
     if (!value.npm || !value.fullName || !value.email
       || !value.semester || !value.noWa || !value.tema || !value.title) {
       toast.error('silahkan isi semua data!!!');
+      return;
+    }
+
+    if (!fileUpload.proposal) {
+      toast.error('Wajib mengupload file proposal pengajuan skripsi.');
+      return;
+    }
+
+    if (!fileUpload.rekap) {
+      toast.error('Wajib mengupload file rekap nilai.');
       return;
     }
 
