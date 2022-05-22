@@ -1,10 +1,14 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable react/button-has-type */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-alert */
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
+import _ from 'lodash';
 import { RequestPengajuanType } from '../../../services/data-types';
 import { setPengajuan, uploadProposalFile, uploadRekapFile } from '../../../services/mahasiswa';
+import InputDinamis from '../../atoms/InputDinamis';
 
 interface ProposalFormProps {
   ajaranID: string;
@@ -13,6 +17,40 @@ interface ProposalFormProps {
 interface fileTypes {
   proposal: any;
   rekap: any;
+}
+
+interface HeaderItemProps {
+  title: string;
+  subTitle: string;
+  buttonTitle: string;
+  onButtonClick: any;
+}
+function HeaderItem(props: HeaderItemProps) {
+  const {
+    title, subTitle, buttonTitle, onButtonClick,
+  } = props;
+  return (
+    <div className="row">
+      <div className="col-lg-8">
+        <div className="form-label text-lg fw-medium color-palette-1 mb-10">
+          {title}
+
+        </div>
+        <div className="form-label text-sm fw-medium color-palette-1 mb-10" style={{ opacity: '0.5' }}>
+          {subTitle}
+
+        </div>
+      </div>
+      <div className="col-lg-4 d-flex align-items-center justify-content-end">
+        <button
+          onClick={onButtonClick}
+          className="btn btn-submit rounded-pill fw-medium text-white border-0 text-m"
+        >
+          {buttonTitle}
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default function ProposalForm(props: ProposalFormProps) {
@@ -44,12 +82,15 @@ export default function ProposalForm(props: ProposalFormProps) {
     noWa: '',
     email: '',
     tema: '',
-    matkulLain: '',
     dosenOld1: '',
     dosenOld2: '',
     fileProposal: '',
     fileRekap: '',
   });
+
+  const [matkulLainDinamis, setMatkulLainDinamis] = useState([{
+    name: '',
+  }]);
 
   const router = useRouter();
 
@@ -57,10 +98,38 @@ export default function ProposalForm(props: ProposalFormProps) {
     let uriProposal: string = '';
     let uriRekap: string = '';
 
+    // eslint-disable-next-line no-array-constructor
+    let reqMatkulLain = new Array();
+    if (matkulLainDinamis && matkulLainDinamis.length > 0) {
+      // eslint-disable-next-line no-unused-expressions
+      // eslint-disable-next-line array-callback-return
+      matkulLainDinamis && matkulLainDinamis.map((data) => {
+        if (data.name) {
+          reqMatkulLain = [...reqMatkulLain, { name: `${data.name}; ` }];
+        }
+      });
+    }
+
     if (!value.npm || !value.fullName || !value.email
       || !value.semester || !value.noWa || !value.tema || !value.title) {
       toast.error('silahkan isi semua data!!!');
       return;
+    }
+
+    if (matkulLain.yes && reqMatkulLain.length === 0) {
+      toast.error('Jika memilih ya pada pertanyan mata kuliah lain, maka wajib mengisi minimal satu mata kuliah.');
+      return;
+    }
+
+    let matkulOther = '';
+    if (reqMatkulLain && reqMatkulLain.length > 0) {
+      // eslint-disable-next-line no-unused-expressions
+      // eslint-disable-next-line array-callback-return
+      reqMatkulLain && reqMatkulLain.map((data) => {
+        if (data.name) {
+          matkulOther += data.name;
+        }
+      });
     }
 
     // Upload File Proposal
@@ -101,6 +170,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       dosen_sebelum: value.dosenOld1,
       dosen_sebelum2: value.dosenOld2,
       ajaran: value.ajaranId,
+      mata_kuliah_lain: matkulOther,
     };
 
     const response = await setPengajuan(requestData);
@@ -125,6 +195,22 @@ export default function ProposalForm(props: ProposalFormProps) {
 
   const onBack = () => {
     optionsBack();
+  };
+
+  const handleChangeMatkulLain = (event: any, index: any) => {
+    matkulLainDinamis[index].name = event.target.value;
+    setMatkulLainDinamis([...matkulLainDinamis]);
+  };
+
+  const handleAddMatkulLains = () => {
+    // eslint-disable-next-line no-unused-expressions
+    matkulLainDinamis && matkulLainDinamis.push({ name: '' });
+    setMatkulLainDinamis([...matkulLainDinamis]);
+  };
+
+  const handleRemovMatkulLains = (_data: any, index: any) => {
+    _.pullAt(matkulLainDinamis, [index]);
+    setMatkulLainDinamis([...matkulLainDinamis]);
   };
 
   return (
@@ -474,20 +560,21 @@ export default function ProposalForm(props: ProposalFormProps) {
       {matkulLain.yes
       && (
       <div className="pb-50">
-        <label htmlFor="matkulLain" className="form-label text-lg fw-medium color-palette-1 mb-10">
-          Mata Kuliah Yang Diambil
-        </label>
-        <input
-          type="text"
-          className="form-control rounded-pill text-lg"
-          id="matkulLain"
-          name="matkulLain"
-          aria-describedby="matkulLain"
-          placeholder="Masukan Nama Mata Kuliah Yang Dimaksud"
-          value={value.matkulLain}
-          onChange={(event) => setValue({ ...value, matkulLain: event.target.value })}
+        <HeaderItem
+          onButtonClick={handleAddMatkulLains}
+          buttonTitle="Tambah +"
+          title="Mata Kuliah Yang Diambil"
+          subTitle="Masukan nama mata kuliah yang diambil selain krs skripsi"
+        />
+
+        <InputDinamis
+          onDeleteClick={handleRemovMatkulLains}
+          data={matkulLainDinamis}
+          placeHolder="Masukan Nama Mata Kuliah Yang Dimaksud"
+          onChange={handleChangeMatkulLain}
         />
       </div>
+
       )}
 
       <div className="d-sm-block d-flex flex-column w-100 align-items-end justify-content-end">

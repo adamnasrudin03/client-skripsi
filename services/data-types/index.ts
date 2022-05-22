@@ -21,6 +21,7 @@ export interface RequestPengajuanType {
     dosen_sebelum: string;
     dosen_sebelum2: string;
     ajaran: string;
+    mata_kuliah_lain: string;
 }
 
 export interface ResponsePengajuanTypes {
