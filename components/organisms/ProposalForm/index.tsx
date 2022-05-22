@@ -359,17 +359,22 @@ export default function ProposalForm(props: ProposalFormProps) {
           No Whatsapp
           <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
-        <input
-          type="number"
-          className="form-control rounded-pill text-lg"
-          id="noWA"
-          name="noWA"
-          aria-describedby="noWA"
-          placeholder="Masukan No Whatsapp Anda"
-          value={value.noWa}
-          onChange={(event) => setValue({ ...value, noWa: event.target.value })}
-          required
-        />
+        <div className="d-flex align-items-center">
+          <span style={{ fontSize: '18px' }}>
+            +62&nbsp;&nbsp;
+          </span>
+          <input
+            type="number"
+            className="form-control rounded-pill text-lg"
+            id="noWA"
+            name="noWA"
+            aria-describedby="noWA"
+            placeholder="Masukan No Whatsapp Anda"
+            value={value.noWa}
+            onChange={(event) => setValue({ ...value, noWa: event.target.value })}
+            required
+          />
+        </div>
       </div>
 
       <div className="pb-20">
