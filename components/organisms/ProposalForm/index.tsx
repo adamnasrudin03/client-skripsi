@@ -98,7 +98,9 @@ export default function ProposalForm(props: ProposalFormProps) {
 
   const [loading, setLoading] = useState(false);
   const handleCloseLoading = () => {
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
   };
 
   const router = useRouter();
@@ -651,7 +653,6 @@ export default function ProposalForm(props: ProposalFormProps) {
         <Backdrop
           sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={loading}
-          onClick={handleCloseLoading}
         >
           <CircularProgress color="inherit" />
         </Backdrop>
