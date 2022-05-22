@@ -631,7 +631,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       <div className="d-sm-block d-flex flex-column w-100 align-items-end justify-content-end">
         <button
           type="button"
-          style={{ backgroundColor: '#eeeeee', marginRight: '15px' }}
+          style={{ backgroundColor: '#eeeeee', marginRight: '15px', marginTop: '15px' }}
           className="btn btn-submit rounded-pill fw-medium text-dark border-0 text-lg "
           onClick={onBack}
         >
@@ -639,6 +639,7 @@ export default function ProposalForm(props: ProposalFormProps) {
         </button>
         <button
           type="button"
+          style={{ marginTop: '15px' }}
           className="btn btn-submit rounded-pill fw-medium text-white border-0 text-lg"
           onClick={onSubmit}
         >
