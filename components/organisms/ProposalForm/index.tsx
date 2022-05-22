@@ -34,6 +34,7 @@ function HeaderItem(props: HeaderItemProps) {
       <div className="col-lg-8">
         <div className="form-label text-lg fw-medium color-palette-1 mb-10">
           {title}
+          <sup style={{ color: '#ff0000' }}>*</sup>
 
         </div>
         <div className="form-label text-sm fw-medium color-palette-1 mb-10" style={{ opacity: '0.5' }}>
@@ -218,6 +219,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       <div className={oldSK.yes ? 'pt-md-50 pt-30 pb-20' : 'pt-md-50 pt-30 pb-50'}>
         <label htmlFor="oldSK" className="form-label text-lg fw-medium color-palette-1 mb-10">
           Apakah Sudah Mempunyai SK Sebelumnya ?
+          <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <br />
         <div className="form-check form-check-inline">
@@ -258,6 +260,7 @@ export default function ProposalForm(props: ProposalFormProps) {
           <div className="pb-20">
             <label htmlFor="dosenOld1" className="form-label text-lg fw-medium color-palette-1 mb-10">
               Nama Dosen Pembimbing 1 Sebelumnya
+              <sup style={{ color: '#ff0000' }}>*</sup>
             </label>
             <input
               type="text"
@@ -274,6 +277,7 @@ export default function ProposalForm(props: ProposalFormProps) {
           <div className="pb-20">
             <label htmlFor="dosenOld2" className="form-label text-lg fw-medium color-palette-1 mb-10">
               Nama Dosen Pembimbing 2 Sebelumnya
+              <sup style={{ color: '#ff0000' }}>*</sup>
             </label>
             <input
               type="text"
@@ -293,6 +297,7 @@ export default function ProposalForm(props: ProposalFormProps) {
         <div className="pb-20">
           <label htmlFor="NPM" className="form-label text-lg fw-medium color-palette-1 mb-10">
             NPM
+            <sup style={{ color: '#ff0000' }}>*</sup>
           </label>
           <input
             type="text"
@@ -311,6 +316,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       <div className="pb-20">
         <label htmlFor="fullName" className="form-label text-lg fw-medium color-palette-1 mb-10">
           Nama Lengkap
+          <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <input
           type="text"
@@ -328,6 +334,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       <div className="pb-20">
         <label htmlFor="email" className="form-label text-lg fw-medium color-palette-1 mb-10">
           Email
+          <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <input
           type="email"
@@ -345,6 +352,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       <div className="pb-20">
         <label htmlFor="noWA" className="form-label text-lg fw-medium color-palette-1 mb-10">
           No Whatsapp
+          <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <input
           type="number"
@@ -362,6 +370,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       <div className="pb-20">
         <label htmlFor="lanjutan" className="form-label text-lg fw-medium color-palette-1 mb-10">
           Apakah Anda Mahasiswa Lanjutan ?
+          <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <br />
         <div className="form-check form-check-inline" id="lanjutan">
@@ -401,6 +410,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       <div className="pb-20">
         <label htmlFor="semester" className="form-label text-lg fw-medium color-palette-1 mb-10">
           Semester
+          <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <select
           className="form-select  rounded-pill text-lg"
@@ -442,6 +452,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       <div className="pb-20">
         <label htmlFor="title" className="form-label text-lg fw-medium color-palette-1 mb-10">
           Judul Skripsi
+          <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <input
           type="text"
@@ -458,6 +469,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       <div className="pb-20">
         <label htmlFor="temaSkripsi" className="form-label text-lg fw-medium color-palette-1 mb-10">
           Tema Skripsi
+          <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <select
           className="form-select  rounded-pill text-lg"
@@ -481,6 +493,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       <div className="pb-20">
         <label htmlFor="fileProposal" className="form-label text-lg fw-medium color-palette-1 mb-10">
           Upload Document Proposal Skripsi (.doc)
+          <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <input
           type="file"
@@ -502,6 +515,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       <div className="pb-20">
         <label htmlFor="fileRekap" className="form-label text-lg fw-medium color-palette-1 mb-10">
           Upload Rekap Nilai Mahasiswa (.pdf)
+          <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <input
           type="file"
@@ -523,6 +537,7 @@ export default function ProposalForm(props: ProposalFormProps) {
       <div className={matkulLain.yes ? 'pb-20' : 'pb-50'}>
         <label htmlFor="title" className="form-label text-lg fw-medium color-palette-1 mb-10">
           Apakah Masih Ada Lanjut Mata Kuliah Lagi Setelah Sidang Skripsi ?
+          <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <br />
         <div className="form-check form-check-inline">

@@ -84,6 +84,7 @@ export default function Index({ dataItem, dateNowNumber }: DetailProps) {
             <div className="pb-20">
               <label htmlFor="tahunAjaran" className="form-label text-lg fw-medium color-palette-1 mb-10">
                 Tahun Ajaran
+                <sup style={{ color: '#ff0000' }}>*</sup>
               </label>
               <select
                 className="form-select  rounded-pill text-lg"
