@@ -7,6 +7,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import _ from 'lodash';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import { RequestPengajuanType } from '../../../services/data-types';
 import { setPengajuan, uploadProposalFile, uploadRekapFile } from '../../../services/mahasiswa';
 import InputDinamis from '../../atoms/InputDinamis';
@@ -94,9 +96,15 @@ export default function ProposalForm(props: ProposalFormProps) {
     name: '',
   }]);
 
+  const [loading, setLoading] = useState(false);
+  const handleCloseLoading = () => {
+    setLoading(false);
+  };
+
   const router = useRouter();
 
   const onSubmit = async () => {
+    setLoading(!loading);
     let uriProposal: string = '';
     let uriRekap: string = '';
 
@@ -114,27 +122,32 @@ export default function ProposalForm(props: ProposalFormProps) {
 
     if (oldSK.yes && !value.dosenOld1 && !value.dosenOld2) {
       toast.error('Jika memilih ya pada pertanyan mempunyai SK bimbingan, maka wajib mengisi data dosen pembimbing sebelumnya.');
+      handleCloseLoading();
       return;
     }
 
     if (!value.npm || !value.fullName || !value.email
       || !value.semester || !value.noWa || !value.tema || !value.title) {
       toast.error('silahkan isi semua data!!!');
+      handleCloseLoading();
       return;
     }
 
     if (!fileUpload.proposal) {
       toast.error('Wajib mengupload file proposal pengajuan skripsi.');
+      handleCloseLoading();
       return;
     }
 
     if (!fileUpload.rekap) {
       toast.error('Wajib mengupload file rekap nilai.');
+      handleCloseLoading();
       return;
     }
 
     if (matkulLain.yes && reqMatkulLain.length === 0) {
       toast.error('Jika memilih ya pada pertanyan mata kuliah lain, maka wajib mengisi minimal satu mata kuliah.');
+      handleCloseLoading();
       return;
     }
 
@@ -193,8 +206,10 @@ export default function ProposalForm(props: ProposalFormProps) {
     const response = await setPengajuan(requestData);
     if (response.error) {
       toast.error(response.message);
+      handleCloseLoading();
     } else {
       toast.success('Proposal Skripsi Berhasil Diajukan.');
+      handleCloseLoading();
       setTimeout(() => {
         router.push('/');
       }, 3000);
@@ -629,6 +644,16 @@ export default function ProposalForm(props: ProposalFormProps) {
         >
           Kirim
         </button>
+      </div>
+
+      <div>
+        <Backdrop
+          sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={loading}
+          onClick={handleCloseLoading}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
       </div>
     </>
   );
