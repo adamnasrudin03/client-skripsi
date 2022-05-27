@@ -617,7 +617,7 @@ export default function ProposalForm(props: ProposalFormProps) {
           onButtonClick={handleAddMatkulLains}
           buttonTitle="Tambah +"
           title="Mata Kuliah Yang Diambil"
-          subTitle="Masukan nama mata kuliah yang diambil selain krs skripsi"
+          subTitle="Masukan Nama Mata Kuliah Yang Diambil Selain KRS Skripsi"
         />
 
         <InputDinamis

@@ -34,7 +34,7 @@ export default function Story() {
                 <br
                   className="d-sm-block d-none"
                 />
-                lagi. kirim pengajuan proposal skrispsi sekarang.
+                lagi. Kirim pengajuan proposal skripsi sekarang.
                 <br className="d-sm-block d-none" />
                 {' '}
 
