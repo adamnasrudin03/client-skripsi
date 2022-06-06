@@ -198,7 +198,7 @@ export default function Index({ dataItem, dateNowNumber }: DetailProps) {
 
 export async function getStaticProps() {
   const currentDate = new Date();
-  const cDay = currentDate.getDate();
+  const cDay = (`0${currentDate.getDate()}`).slice(-2);
   const cMonth = String(currentDate.getMonth() + 1).padStart(2, '0');
   const cYear = currentDate.getFullYear();
   const now:string = `${cDay}/${cMonth}/${cYear}`;
