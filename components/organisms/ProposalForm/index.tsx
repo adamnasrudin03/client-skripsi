@@ -530,7 +530,7 @@ export default function ProposalForm(props: ProposalFormProps) {
 
       <div className="pb-20">
         <label htmlFor="fileProposal" className="form-label text-lg fw-medium color-palette-1 mb-10">
-          Upload Dokumen Proposal Skripsi (.doc)
+          Unggah Dokumen Proposal Skripsi (.doc)
           <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <input
@@ -538,7 +538,7 @@ export default function ProposalForm(props: ProposalFormProps) {
           className="form-control rounded-pill text-lg"
           id="fileProposal"
           name="fileProposal"
-          placeholder="Upload File Proposal Anda"
+          placeholder="Unggah File Proposal Anda"
           accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
           onChange={(event) => {
             const file = event.target.files![0];
@@ -552,7 +552,7 @@ export default function ProposalForm(props: ProposalFormProps) {
 
       <div className="pb-20">
         <label htmlFor="fileRekap" className="form-label text-lg fw-medium color-palette-1 mb-10">
-          Upload Rekap Nilai Mahasiswa (.pdf)
+          Unggah Rekap Nilai Mahasiswa (.pdf)
           <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <input
@@ -560,7 +560,7 @@ export default function ProposalForm(props: ProposalFormProps) {
           className="form-control rounded-pill text-lg"
           id="fileRekap"
           name="fileRekap"
-          placeholder="Upload File Rekap Nilai Anda"
+          placeholder="Unggah File Rekap Nilai Anda"
           accept=".pdf"
           onChange={(event) => {
             const file = event.target.files![0];
