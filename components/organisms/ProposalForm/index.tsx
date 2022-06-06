@@ -530,7 +530,7 @@ export default function ProposalForm(props: ProposalFormProps) {
 
       <div className="pb-20">
         <label htmlFor="fileProposal" className="form-label text-lg fw-medium color-palette-1 mb-10">
-          Upload Document Proposal Skripsi (.doc)
+          Upload Dokumen Proposal Skripsi (.doc)
           <sup style={{ color: '#ff0000' }}>*</sup>
         </label>
         <input
