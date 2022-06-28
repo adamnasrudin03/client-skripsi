@@ -1,12 +1,16 @@
-/* eslint-disable max-len */
-// import Image from 'next/image';
+import Image from 'next/image';
 
 export default function Illustration() {
   return (
     <div className="col-lg-6 col-12 d-lg-block d-none">
       <div className="d-flex justify-content-lg-end justify-content-center me-lg-5">
         <div className="position-relative" data-aos="zoom-in">
-          <img src="/img/ilustrations/Certificate.png" className="img-fluid" alt="" />
+          <Image
+            src="/img/ilustrations/Certificate.png"
+            width={500}
+            height={500}
+            className="img-fluid"
+          />
           {/* <div className="card left-card position-absolute border-0">
             <div className="d-flex align-items-center mb-16 gap-3">
               <Image
