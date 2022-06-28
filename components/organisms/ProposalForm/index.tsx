@@ -327,23 +327,21 @@ export default function ProposalForm(props: ProposalFormProps) {
       )}
 
       <div className="pb-20">
-        <div className="pb-20">
-          <label htmlFor="NPM" className="form-label text-lg fw-medium color-palette-1 mb-10">
-            NPM
-            <sup style={{ color: '#ff0000' }}>*</sup>
-          </label>
-          <input
-            type="text"
-            className="form-control rounded-pill text-lg input-lg"
-            id="NPM"
-            name="NPM"
-            aria-describedby="NPM"
-            placeholder="Masukan Nomor Pokok Mahasiswa Anda"
-            value={value.npm}
-            onChange={(event) => setValue({ ...value, npm: event.target.value })}
-            required
-          />
-        </div>
+        <label htmlFor="NPM" className="form-label text-lg fw-medium color-palette-1 mb-10">
+          NPM
+          <sup style={{ color: '#ff0000' }}>*</sup>
+        </label>
+        <input
+          type="text"
+          className="form-control rounded-pill text-lg input-lg"
+          id="NPM"
+          name="NPM"
+          aria-describedby="NPM"
+          placeholder="Masukan Nomor Pokok Mahasiswa Anda"
+          value={value.npm}
+          onChange={(event) => setValue({ ...value, npm: event.target.value })}
+          required
+        />
       </div>
 
       <div className="pb-20">
